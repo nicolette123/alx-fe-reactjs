@@ -1,15 +1,6 @@
-import React from "react";
-
 function MainContent() {
   return (
-    <main
-      style={{
-        backgroundColor: "#f0f0f0",
-        padding: "20px",
-        textAlign: "center",
-        fontSize: "18px",
-      }}
-    >
+    <main style={{ backgroundColor: '#f9f9f9', padding: '10px', textAlign: 'center' }}>
       <p>I love to visit New York, Paris, and Tokyo.</p>
     </main>
   );
