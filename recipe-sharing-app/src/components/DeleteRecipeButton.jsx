@@ -1,9 +1,13 @@
-import { useRecipeStore } from './recipeStore';
+import { useRecipeStore } from "./recipeStore";
 
 const DeleteRecipeButton = ({ recipeId }) => {
   const deleteRecipe = useRecipeStore((state) => state.deleteRecipe);
 
-  return <button onClick={() => deleteRecipe(recipeId)}>Delete</button>;
+  const handleDelete = () => {
+    deleteRecipe(recipeId);
+  };
+
+  return <button onClick={handleDelete}>Delete</button>;
 };
 
 export default DeleteRecipeButton;
