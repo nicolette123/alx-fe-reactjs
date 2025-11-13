@@ -1,39 +1,41 @@
-import { create } from "zustand";
+import { create } from 'zustand';
 
-export const useRecipeStore = create((set) => ({
+export const useRecipeStore = create((set, get) => ({
   recipes: [],
-  searchTerm: "",
-  filteredRecipes: [],
+  favorites: [],
+  recommendations: [],
 
-  addRecipe: (newRecipe) =>
+  // Add a recipe to favorites
+  addFavorite: (recipeId) =>
     set((state) => ({
-      recipes: [...state.recipes, newRecipe],
-      filteredRecipes: [...state.recipes, newRecipe], // keep synced
+      favorites: state.favorites.includes(recipeId)
+        ? state.favorites
+        : [...state.favorites, recipeId],
     })),
 
-  deleteRecipe: (id) =>
+  // Remove a recipe from favorites
+  removeFavorite: (recipeId) =>
     set((state) => ({
-      recipes: state.recipes.filter((recipe) => recipe.id !== id),
-      filteredRecipes: state.filteredRecipes.filter((recipe) => recipe.id !== id),
+      favorites: state.favorites.filter((id) => id !== recipeId),
     })),
 
-  updateRecipe: (updatedRecipe) =>
-    set((state) => ({
-      recipes: state.recipes.map((r) =>
-        r.id === updatedRecipe.id ? updatedRecipe : r
-      ),
-      filteredRecipes: state.filteredRecipes.map((r) =>
-        r.id === updatedRecipe.id ? updatedRecipe : r
-      ),
-    })),
-
-  setSearchTerm: (term) =>
+  // Generate mock recommendations (you can later improve logic)
+  generateRecommendations: () =>
     set((state) => {
-      const filtered = state.recipes.filter((recipe) =>
-        recipe.title.toLowerCase().includes(term.toLowerCase())
+      const recommended = state.recipes.filter(
+        (recipe) =>
+          state.favorites.includes(recipe.id) && Math.random() > 0.5
       );
-      return { searchTerm: term, filteredRecipes: filtered };
+      return { recommendations: recommended };
     }),
 
-  setRecipes: (recipes) => set({ recipes, filteredRecipes: recipes }),
+  // You can add helper to toggle favorite easily
+  toggleFavorite: (recipeId) => {
+    const { favorites, addFavorite, removeFavorite } = get();
+    if (favorites.includes(recipeId)) {
+      removeFavorite(recipeId);
+    } else {
+      addFavorite(recipeId);
+    }
+  },
 }));
