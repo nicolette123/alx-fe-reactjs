@@ -1,21 +1,22 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useRecipeStore } from './recipeStore';
 
 const RecipeList = () => {
-  const recipes = useRecipeStore((state) => state.recipes);
-  const favorites = useRecipeStore((state) => state.favorites);
-  const toggleFavorite = useRecipeStore((state) => state.toggleFavorite);
+  const recipes = useRecipeStore((state) => state.filteredRecipes);
+  const filterRecipes = useRecipeStore((state) => state.filterRecipes);
+  const searchTerm = useRecipeStore((state) => state.searchTerm);
+
+  useEffect(() => {
+    filterRecipes();
+  }, [searchTerm]);
 
   return (
     <div>
-      <h2>All Recipes</h2>
+      <h2>Recipes</h2>
       {recipes.map((recipe) => (
-        <div key={recipe.id} style={{ marginBottom: '10px' }}>
+        <div key={recipe.id}>
           <h3>{recipe.title}</h3>
           <p>{recipe.description}</p>
-          <button onClick={() => toggleFavorite(recipe.id)}>
-            {favorites.includes(recipe.id) ? '💔 Remove Favorite' : '❤️ Add to Favorites'}
-          </button>
         </div>
       ))}
     </div>

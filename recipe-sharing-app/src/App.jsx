@@ -1,17 +1,18 @@
 import React from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import SearchBar from './components/SearchBar';
 import RecipeList from './components/RecipeList';
-import FavoritesList from './components/FavoritesList';
-import RecommendationsList from './components/RecommendationsList';
 
-function App() {
+
+const App = () => {
   return (
-    <div style={{ padding: '20px' }}>
-      <h1>🍳 Recipe Sharing App</h1>
-      <RecipeList />
-      <FavoritesList />
-      <RecommendationsList />
-    </div>
+    <BrowserRouter>
+      <SearchBar />
+      <Routes>
+        <Route path="/" element={<RecipeList />} />
+      </Routes>
+    </BrowserRouter>
   );
-}
+};
 
 export default App;
