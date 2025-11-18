@@ -1,22 +1,26 @@
-import React, { useEffect } from 'react';
-import { useRecipeStore } from './recipeStore';
+import { useRecipeStore } from "./recipeStore";
+import { Link } from "react-router-dom";
 
 const RecipeList = () => {
-  const recipes = useRecipeStore((state) => state.filteredRecipes);
-  const filterRecipes = useRecipeStore((state) => state.filterRecipes);
-  const searchTerm = useRecipeStore((state) => state.searchTerm);
+  const recipes = useRecipeStore((state) => state.recipes);
 
-  useEffect(() => {
-    filterRecipes();
-  }, [searchTerm]);
+  // 🔒 Prevent the "undefined.map" error
+  if (!recipes || recipes.length === 0) {
+    return <p>No recipes found</p>;
+  }
 
   return (
     <div>
-      <h2>Recipes</h2>
+      <h2>All Recipes</h2>
+
       {recipes.map((recipe) => (
         <div key={recipe.id}>
           <h3>{recipe.title}</h3>
           <p>{recipe.description}</p>
+
+          <Link to={`/recipe/${recipe.id}`}>
+            View Details
+          </Link>
         </div>
       ))}
     </div>
