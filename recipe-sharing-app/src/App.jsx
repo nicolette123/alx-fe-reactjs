@@ -7,6 +7,8 @@ import RecipeList from './components/RecipeList';
 import RecipeDetails from './components/RecipeDetails';
 import EditRecipeForm from './components/EditRecipeForm';
 import SearchBar from './components/SearchBar';
+import FavoritesList from './components/FavoritesList';
+import RecommendationsList from './components/RecommendationsList';
 
 const App = () => {
   return (
@@ -19,7 +21,6 @@ const App = () => {
           fontFamily: 'Arial, sans-serif',
         }}
       >
-        {/* Header */}
         <header
           style={{
             display: 'flex',
@@ -42,7 +43,6 @@ const App = () => {
         {/* Search bar */}
         <SearchBar />
 
-        {/* Main Routes */}
         <main>
           <Routes>
             <Route
@@ -52,13 +52,14 @@ const App = () => {
                   <AddRecipeForm />
                   <hr style={{ margin: '1.5rem 0' }} />
                   <RecipeList />
+                  <hr style={{ margin: '1.5rem 0' }} />
+                  <FavoritesList />
+                  <RecommendationsList />
                 </>
               }
             />
             <Route path="/recipes/:id" element={<RecipeDetails />} />
             <Route path="/recipes/:id/edit" element={<EditRecipeForm />} />
-
-            {/* fallback */}
             <Route path="*" element={<p>Page not found</p>} />
           </Routes>
         </main>
