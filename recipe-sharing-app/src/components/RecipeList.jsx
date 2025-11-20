@@ -1,33 +1,30 @@
 // src/components/RecipeList.jsx
-import React from 'react'
-import { Link } from 'react-router-dom'
-import { useRecipeStore } from './recipeStore'
+import React from 'react';
+import { useRecipeStore } from './recipeStore';
+import { Link } from 'react-router-dom';
 
 const RecipeList = () => {
-  const recipes = useRecipeStore((state) => state.recipes)
-
-  if (!recipes || recipes.length === 0) {
-    return <p>No recipes yet. Add one above!</p>
-  }
+  // Use filteredRecipes for search functionality
+  const filteredRecipes = useRecipeStore((state) => state.filteredRecipes);
 
   return (
     <div>
       <h2>Recipes</h2>
-      {recipes.map((recipe) => (
-        <div key={recipe.id} style={{ padding: '0.5rem 0', borderBottom: '1px solid #eee', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <div>
-            <h3 style={{ margin: '0.2rem 0' }}>{recipe.title}</h3>
-            <p style={{ margin: 0 }}>{recipe.description}</p>
-          </div>
 
-          <div style={{ display: 'flex', gap: 8 }}>
-            <Link to={`/recipes/${recipe.id}`} aria-label={`view-${recipe.id}`}>View</Link>
-            <Link to={`/recipes/${recipe.id}/edit`} aria-label={`edit-${recipe.id}`}>Edit</Link>
+      {filteredRecipes.length === 0 ? (
+        <p>No recipes found.</p>
+      ) : (
+        filteredRecipes.map((recipe) => (
+          <div key={recipe.id}>
+            <h3>
+              <Link to={`/recipes/${recipe.id}`}>{recipe.title}</Link>
+            </h3>
+            <p>{recipe.description}</p>
           </div>
-        </div>
-      ))}
+        ))
+      )}
     </div>
-  )
-}
+  );
+};
 
-export default RecipeList
+export default RecipeList;
