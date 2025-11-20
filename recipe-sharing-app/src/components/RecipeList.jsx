@@ -1,30 +1,24 @@
-import { useRecipeStore } from "./recipeStore";
-import { Link } from "react-router-dom";
+import React from 'react'
+import { useRecipeStore } from './recipeStore'
 
 const RecipeList = () => {
-  const recipes = useRecipeStore((state) => state.recipes);
+  const recipes = useRecipeStore((state) => state.recipes)
 
-  // 🔒 Prevent the "undefined.map" error
   if (!recipes || recipes.length === 0) {
-    return <p>No recipes found</p>;
+    return <p>No recipes yet. Add one above!</p>
   }
 
   return (
     <div>
-      <h2>All Recipes</h2>
-
+      <h2>Recipes</h2>
       {recipes.map((recipe) => (
-        <div key={recipe.id}>
-          <h3>{recipe.title}</h3>
-          <p>{recipe.description}</p>
-
-          <Link to={`/recipe/${recipe.id}`}>
-            View Details
-          </Link>
+        <div key={recipe.id} style={{ padding: '0.5rem 0', borderBottom: '1px solid #eee' }}>
+          <h3 style={{ margin: '0.2rem 0' }}>{recipe.title}</h3>
+          <p style={{ margin: 0 }}>{recipe.description}</p>
         </div>
       ))}
     </div>
-  );
-};
+  )
+}
 
-export default RecipeList;
+export default RecipeList
