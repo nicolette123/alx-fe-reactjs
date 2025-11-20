@@ -1,29 +1,23 @@
-// src/components/RecipeDetails.jsx
-import React from 'react'
-import { useParams, Link, useNavigate } from 'react-router-dom'
-import { useRecipeStore } from './recipeStore'
+import React from 'react';
+import { useParams, Link } from 'react-router-dom';
+import { useRecipeStore } from './recipeStore';
+import DeleteRecipeButton from './DeleteRecipeButton';
 
 const RecipeDetails = () => {
-  const { id } = useParams()
-  const recipeId = Number(id)
-  const recipe = useRecipeStore((state) => state.recipes.find((r) => r.id === recipeId))
-  const deleteRecipe = useRecipeStore((state) => state.deleteRecipe)
-  const navigate = useNavigate()
+  const { id } = useParams();
+  const recipeId = Number(id);
+
+  const recipe = useRecipeStore(state =>
+    state.recipes.find(recipe => recipe.id === recipeId)
+  );
 
   if (!recipe) {
     return (
       <div>
-        <p>Recipe not found.</p>
-        <Link to="/">Back to list</Link>
+        <h2>Recipe not found</h2>
+        <Link to="/">Back</Link>
       </div>
-    )
-  }
-
-  const handleDelete = () => {
-    if (window.confirm('Delete this recipe?')) {
-      deleteRecipe(recipeId)
-      navigate('/')
-    }
+    );
   }
 
   return (
@@ -31,16 +25,18 @@ const RecipeDetails = () => {
       <h1>{recipe.title}</h1>
       <p>{recipe.description}</p>
 
-      <div style={{ marginTop: 12 }}>
-        <Link to={`/recipes/${recipeId}/edit`} style={{ marginRight: 8 }}>Edit</Link>
-        <button onClick={handleDelete}>Delete</button>
-      </div>
+    
+      <p>Recipe ID: {recipe.id}</p>
 
-      <div style={{ marginTop: 16 }}>
-        <Link to="/">Back to Recipes</Link>
-      </div>
+      <Link to={`/recipes/${recipe.id}/edit`}>Edit Recipe</Link>
+      <br /><br />
+
+      <DeleteRecipeButton id={recipe.id} />
+
+      <br /><br />
+      <Link to="/">Back to all recipes</Link>
     </div>
-  )
-}
+  );
+};
 
-export default RecipeDetails
+export default RecipeDetails;
