@@ -1,20 +1,20 @@
-import React, { useState, useEffect } from 'react';
-import { useParams, useNavigate, Link } from 'react-router-dom';
-import { useRecipeStore } from './recipeStore';
+import React, { useState, useEffect } from "react";
+import { useParams, useNavigate, Link } from "react-router-dom";
+import { useRecipeStore } from "./recipeStore";
 
 const EditRecipeForm = () => {
   const { id } = useParams();
   const recipeId = Number(id);
 
-  const recipe = useRecipeStore(state =>
-    state.recipes.find(recipe => recipe.id === recipeId)
+  const recipe = useRecipeStore((state) =>
+    state.recipes.find((recipe) => recipe.id === recipeId)
   );
 
-  const updateRecipe = useRecipeStore(state => state.updateRecipe);
+  const updateRecipe = useRecipeStore((state) => state.updateRecipe);
   const navigate = useNavigate();
 
-  const [title, setTitle] = useState('');
-  const [description, setDescription] = useState('');
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
 
   useEffect(() => {
     if (recipe) {
@@ -32,13 +32,16 @@ const EditRecipeForm = () => {
     );
   }
 
-  const handleSubmit = e => {
-    e.preventDefault();
+  
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
     updateRecipe({
-      id: recipe.id,   // REQUIRED BY CHECKER
+      id: recipe.id, 
       title,
-      description
+      description,
     });
+
     navigate(`/recipes/${recipe.id}`);
   };
 
@@ -51,7 +54,7 @@ const EditRecipeForm = () => {
           Title:
           <input
             value={title}
-            onChange={e => setTitle(e.target.value)}
+            onChange={(event) => setTitle(event.target.value)}
             required
           />
         </label>
@@ -62,7 +65,7 @@ const EditRecipeForm = () => {
           Description:
           <textarea
             value={description}
-            onChange={e => setDescription(e.target.value)}
+            onChange={(event) => setDescription(event.target.value)}
           />
         </label>
 

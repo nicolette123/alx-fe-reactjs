@@ -5,6 +5,7 @@ import AddRecipeForm from './components/AddRecipeForm'
 import RecipeList from './components/RecipeList'
 import RecipeDetails from './components/RecipeDetails'
 import EditRecipeForm from './components/EditRecipeForm'
+import DeleteRecipeButton from './components/DeleteRecipeButton'
 import { useRecipeStore } from './components/recipeStore'
 
 const App = () => {
