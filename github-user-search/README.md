@@ -1,16 +1,141 @@
-# React + Vite
+GitHub User Search – React + Vite Application
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simple and responsive GitHub User Search Application built with React, Vite, and Axios.
+Users can search GitHub profiles, view avatars, usernames, and navigate directly to a user’s GitHub page.
 
-Currently, two official plugins are available:
+This project is part of the ALX React Fundamentals tasks under the repository:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+alx-fe-reactjs
+Directory: github-user-search
 
-## React Compiler
+🚀 Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+🔍 Search GitHub users using the official GitHub Search API
 
-## Expanding the ESLint configuration
+👤 Display user avatar, username, and account type
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+🔗 Direct link to GitHub profile
+
+⚡ Fast performance using Vite
+
+🔐 Optional GitHub token support via .env for increased API rate limits
+
+📁 Clean component-based structure
+
+📂 Project Structure
+github-user-search/
+├── 
+├── index.html
+├── package.json
+├── vite.config.js
+├── src/
+│   ├── App.jsx
+│   ├── main.jsx
+│   ├── index.css
+│   ├── components/
+│   │   ├── SearchBar.jsx
+│   │   ├── UserList.jsx
+│   │   └── UserCard.jsx
+│   └── services/
+│       └── githubService.js
+
+🛠️ Technologies Used
+
+React (frontend framework)
+
+Vite (development & bundling)
+
+Axios (API requests)
+
+CSS (styling)
+
+GitHub REST API
+
+⚙️ Setup Instructions
+1️⃣ Clone the Repository
+git clone https://github.com/YOUR_USERNAME/alx-fe-reactjs.git
+cd alx-fe-reactjs/github-user-search
+
+
+Or if you're creating fresh:
+
+npm create vite@latest github-user-search -- --template react
+cd github-user-search
+
+2️⃣ Install Dependencies
+npm install
+
+3️⃣ Install Axios
+npm install axios
+
+🔐 (Optional) Add GitHub API Token
+
+If you want higher rate limits (recommended):
+
+Create a .env file in the project root:
+
+VITE_APP_GITHUB_API_KEY=ghp_your_github_token_here
+
+
+GitHub tokens can be created here:
+https://github.com/settings/tokens
+
+⚠️ Never commit your .env file to GitHub!
+
+▶️ Running the Project
+
+Start development server:
+
+npm run dev
+
+
+Open the printed local URL (usually):
+
+http://localhost:5173/
+
+🧪 How the App Works
+
+User types a search query (e.g., torvalds, microsoft)
+
+The app calls the GitHub Search API:
+
+GET https://api.github.com/search/users?q=USERNAME
+
+
+Results are displayed using:
+
+UserCard (individual profile)
+
+UserList (collection of results)
+
+📡 API Service
+
+API logic is isolated inside:
+
+src/services/githubService.js
+
+
+This keeps the code clean and easy to maintain.
+
+🖼️ UI Overview
+
+SearchBar — input + search button
+
+UserCard — displays avatar + username + link
+
+UserList — grid layout of all results
+
+App.jsx — coordinates search + loading + errors
+
+📦 Build for Production
+npm run build
+
+
+Preview production build locally:
+
+npm run preview
+
+🤝 Author
+
+Nicolette Mukeshimana
+ALX Front-End Engineering
