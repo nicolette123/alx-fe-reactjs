@@ -16,7 +16,7 @@ function Search() {
     const data = await fetchUserData(username);
 
     if (data?.message === "Not Found") {
-      setError("Looks like we can't find the user");
+      setError("Looks like we cant find the user");
     } else {
       setUser(data);
     }
@@ -40,6 +40,7 @@ function Search() {
             border: "1px solid #ccc",
           }}
         />
+
         <button
           type="submit"
           style={{
@@ -65,8 +66,16 @@ function Search() {
             alt="avatar"
             style={{ width: "100px", borderRadius: "50%" }}
           />
-          <h3>{user.name}</h3>
-          <a href={user.html_url} target="_blank">Visit GitHub Profile</a>
+
+         
+          <h3>Username: {user.login}</h3>
+
+        
+          {user.name && <p>Name: {user.name}</p>}
+
+          <a href={user.html_url} target="_blank">
+            Visit GitHub Profile
+          </a>
         </div>
       )}
     </div>
