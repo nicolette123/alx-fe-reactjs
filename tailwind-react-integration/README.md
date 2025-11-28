@@ -1,16 +1,88 @@
-# React + Vite
+📘 Tailwind React Integration
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project demonstrates how to set up Tailwind CSS inside a React application using Vite.
+It follows the exact steps required in the ALX task “0. Setting Up Tailwind CSS in a New React Project.”
 
-Currently, two official plugins are available:
+🚀 Project Setup
+1️⃣ Create a New React Project
+npm create vite@latest tailwind-react-integration -- --template react
+cd tailwind-react-integration
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+2️⃣ Install Tailwind CSS & Vite Plugin
+npm install tailwindcss @tailwindcss/vite
 
-## React Compiler
+3️⃣ Configure Tailwind Plugin in Vite
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Modify vite.config.js:
 
-## Expanding the ESLint configuration
+// vite.config.js
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+import tailwindcss from '@tailwindcss/vite'  // ✅ Added
+
+export default defineConfig({
+  plugins: [
+    react(),
+    tailwindcss(), // ✅ Added
+  ],
+})
+
+4️⃣ Import Tailwind in CSS
+
+Open src/index.css and add:
+
+@import "tailwindcss";
+
+5️⃣ Test the Installation
+
+Run the app:
+
+npm run dev
+
+
+If everything is correct, Tailwind styles will work immediately.
+
+✅ Sample App Component
+
+src/App.jsx
+
+import React from "react";
+
+function App() {
+  return (
+    <div className="h-screen flex items-center justify-center bg-gray-100">
+      <h1 className="text-4xl font-extrabold text-blue-600">
+        Tailwind is working! 🎉
+      </h1>
+    </div>
+  );
+}
+
+export default App;
+
+📂 Project Structure
+tailwind-react-integration/
+│── public/
+│── src/
+│   ├── App.jsx
+│   ├── index.css
+│   ├── main.jsx
+│── vite.config.js
+│── package.json
+│── README.md
+
+🛠 Tools Used
+
+Vite
+
+React
+
+Tailwind CSS
+
+Node.js
+
+📌 Repository
+
+GitHub: alx-fe-reactjs
+Directory: tailwind-react-integration
