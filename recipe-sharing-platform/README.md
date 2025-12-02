@@ -1,16 +1,83 @@
-# React + Vite
+📚 Recipe Sharing Platform
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simple, modern, and responsive recipe-sharing application built with React and Tailwind CSS. Users will be able to browse recipes, view detailed recipe pages, and submit new recipes through a form.
 
-Currently, two official plugins are available:
+🚀 Project Overview
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+The Recipe Sharing Platform is designed to help users explore and share recipes. This project will evolve over multiple tasks, starting from the basic setup to fully functional pages.
 
-## React Compiler
+This README covers Task 0: Project Setup.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+🛠️ Technologies Used
 
-## Expanding the ESLint configuration
+React (Vite) – For building the UI and managing components
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Tailwind CSS – For styling with utility-first classes
+
+PostCSS & Autoprefixer – For Tailwind processing
+
+JavaScript (ES6+)
+
+📂 Project Setup Instructions
+1️⃣ Create the React Project
+npm create vite@latest recipe-sharing-platform -- --template react
+cd recipe-sharing-platform
+
+2️⃣ Install Tailwind CSS
+npm install -D tailwindcss postcss autoprefixer
+npx tailwindcss init -p
+
+3️⃣ Configure Tailwind
+
+Modify tailwind.config.js:
+
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: ['./index.html', './src/**/*.{js,jsx,ts,tsx}'],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+};
+
+
+Add Tailwind imports to src/index.css:
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+4️⃣ Verify Tailwind Installation
+
+Edit App.jsx:
+
+function App() {
+  return (
+    <h1 className="text-4xl text-blue-500 font-bold text-center mt-10">
+      Recipe Sharing Platform
+    </h1>
+  );
+}
+
+export default App;
+
+
+Run the project:
+
+npm run dev
+
+
+If you see blue text, Tailwind CSS is working correctly.
+
+📁 Project Structure (Initial)
+recipe-sharing-platform/
+│── src/
+│   ├── App.jsx
+│   ├── index.css
+│   └── main.jsx
+│── public/
+│── index.html
+│── tailwind.config.js
+│── postcss.config.js
+│── package.json
+└── README.md
