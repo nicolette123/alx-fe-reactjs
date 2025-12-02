@@ -11,7 +11,7 @@
       "1/2 cup parmesan",
       "Black pepper"
     ],
-    "steps": [
+    "instructions": [
       "Boil the spaghetti until al dente.",
       "Cook bacon until crispy.",
       "Whisk eggs and parmesan together.",
@@ -31,32 +31,12 @@
       "Cream",
       "Spices"
     ],
-    "steps": [
+    "instructions": [
       "Marinate chicken in yogurt and spices.",
       "Grill until cooked.",
       "Prepare masala sauce in pan.",
       "Add chicken and simmer.",
       "Serve with rice or naan."
-    ]
-  },
-  {
-    "id": 3,
-    "title": "Avocado Toast",
-    "summary": "Crispy toast topped with mashed avocado, tomatoes, and chili flakes.",
-    "image": "https://via.placeholder.com/300x200",
-    "ingredients": [
-      "2 slices bread",
-      "1 avocado",
-      "Cherry tomatoes",
-      "Chili flakes",
-      "Salt & pepper"
-    ],
-    "steps": [
-      "Toast the bread.",
-      "Mash avocado and season.",
-      "Spread on toast.",
-      "Add tomatoes and chili flakes.",
-      "Serve fresh."
     ]
   }
 ]

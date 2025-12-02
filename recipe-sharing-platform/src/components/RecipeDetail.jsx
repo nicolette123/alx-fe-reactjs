@@ -33,14 +33,14 @@ const RecipeDetail = () => {
         className="w-full h-72 object-cover rounded-lg shadow-md mb-6"
       />
 
-      <h1 className="text-4xl font-bold mb-4">{recipe.title}</h1>
+      <h1 className="text-4xl font-bold mb-6">{recipe.title}</h1>
 
       {/* Ingredients Section */}
       <div className="bg-white p-6 rounded-lg shadow-md mb-6">
         <h2 className="text-2xl font-semibold mb-3">Ingredients</h2>
         <ul className="list-disc ml-6 text-gray-700 space-y-1">
-          {recipe.ingredients?.map((item, idx) => (
-            <li key={idx}>{item}</li>
+          {recipe.ingredients?.map((ingredient, index) => (
+            <li key={index}>{ingredient}</li>
           ))}
         </ul>
       </div>
@@ -49,8 +49,8 @@ const RecipeDetail = () => {
       <div className="bg-white p-6 rounded-lg shadow-md">
         <h2 className="text-2xl font-semibold mb-3">Instructions</h2>
         <ol className="list-decimal ml-6 text-gray-700 space-y-2">
-          {recipe.steps?.map((step, idx) => (
-            <li key={idx}>{step}</li>
+          {recipe.instructions?.map((step, index) => (
+            <li key={index}>{step}</li>
           ))}
         </ol>
       </div>
