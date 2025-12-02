@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 const HomePage = () => {
@@ -32,9 +33,12 @@ const HomePage = () => {
               <h2 className="text-xl font-semibold mb-2">{recipe.title}</h2>
               <p className="text-gray-600 text-sm mb-3">{recipe.summary}</p>
 
-              <button className="mt-2 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">
+              <Link
+                to={`/recipe/${recipe.id}`}
+                className="mt-2 inline-block bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition"
+              >
                 View Recipe
-              </button>
+              </Link>
             </div>
           </div>
         ))}
