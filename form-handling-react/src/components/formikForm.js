@@ -1,42 +1,30 @@
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 
-const FormikForm = () => {
-  const initialValues = {
-    username: '',
-    email: '',
-    password: '',
-  };
-
+const formikForm = () => {
   const validationSchema = Yup.object({
-    username: Yup.string().required('Username is required'),
-    email: Yup.string()
-      .email('Invalid email address')
-      .required('Email is required'),
-    password: Yup.string().required('Password is required'),
+    username: Yup.string().required('Required'),
+    email: Yup.string().email('Invalid email').required('Required'),
+    password: Yup.string().required('Required'),
   });
-
-  const handleSubmit = (values) => {
-    console.log('Formik Form Data:', values);
-  };
 
   return (
     <Formik
-      initialValues={initialValues}
+      initialValues={{ username: '', email: '', password: '' }}
       validationSchema={validationSchema}
-      onSubmit={handleSubmit}
+      onSubmit={(values) => {
+        console.log(values);
+      }}
     >
       <Form>
-        <h2>Register (Formik)</h2>
-
         <Field name="username" placeholder="Username" />
-        <ErrorMessage name="username" component="div" style={{ color: 'red' }} />
+        <ErrorMessage name="username" component="div" />
 
         <Field name="email" type="email" placeholder="Email" />
-        <ErrorMessage name="email" component="div" style={{ color: 'red' }} />
+        <ErrorMessage name="email" component="div" />
 
         <Field name="password" type="password" placeholder="Password" />
-        <ErrorMessage name="password" component="div" style={{ color: 'red' }} />
+        <ErrorMessage name="password" component="div" />
 
         <button type="submit">Register</button>
       </Form>
@@ -44,4 +32,4 @@ const FormikForm = () => {
   );
 };
 
-export default FormikForm;
+export default formikForm;
