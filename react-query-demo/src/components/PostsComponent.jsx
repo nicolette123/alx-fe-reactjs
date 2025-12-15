@@ -9,7 +9,7 @@ const PostsComponent = () => {
   const {
     data,
     isLoading,
-    error,
+    isError,
     refetch,
   } = useQuery('posts', fetchPosts, {
     staleTime: 5000,
@@ -19,7 +19,7 @@ const PostsComponent = () => {
     return <p>Loading...</p>;
   }
 
-  if (error) {
+  if (isError) {
     return <p>Error fetching posts</p>;
   }
 
