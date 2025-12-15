@@ -11,7 +11,9 @@ const PostsComponent = () => {
     isLoading,
     error,
     refetch,
-  } = useQuery('posts', fetchPosts);
+  } = useQuery('posts', fetchPosts, {
+    staleTime: 5000,
+  });
 
   if (isLoading) {
     return <p>Loading...</p>;
