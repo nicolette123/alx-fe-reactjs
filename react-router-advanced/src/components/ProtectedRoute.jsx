@@ -1,7 +1,11 @@
 import { Navigate } from 'react-router-dom';
 
+const useAuth = () => {
+  return false; // simulate authentication state
+};
+
 const ProtectedRoute = ({ children }) => {
-  const isAuthenticated = false;
+  const isAuthenticated = useAuth();
 
   if (!isAuthenticated) {
     return <Navigate to="/" />;
